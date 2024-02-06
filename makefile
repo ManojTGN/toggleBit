@@ -1,7 +1,13 @@
 CC = gcc
-BINS = toggleByte
+BINS = main clean
 
 all: $(BINS)
 
-toggleByte:
-	$(CC) src/toggleByte.c -o build/toggleByte.exe
+toggleBit:
+	$(CC) src/toggleBit.c -c -o build/toggleBit.o
+
+main: toggleBit
+	$(CC) src/main.c build/toggleBit.o -o build/toggleBit.exe
+
+clean:
+	rm -f build/*.o
